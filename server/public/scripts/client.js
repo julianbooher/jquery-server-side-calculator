@@ -4,6 +4,7 @@ console.log('Hello from client.js');
 // IDEA: store an object that has the calculation parameters on client side, and then send it to server side to do the actual calculation.
 
 $(document).ready(onReady);
+let mathObject = {};
 
 function onReady(){
     console.log('Hello from jQuery');
@@ -12,9 +13,15 @@ function onReady(){
 }
 
 function selectMath(event){
+    // Prevent page from refreshing.
     event.preventDefault();
-    $('.btn-math').removeClass('active').addClass('inactive');
-    $(this).removeClass('inactive').addClass('active');
+    
+    $('.btn-math').removeClass('active')
+    $(this).addClass('active');
+    mathObject.mathOperator = $(this).data("operator");
+    console.log('New mathObject:', mathObject);
+
+
 }
 
 function getMath(){
