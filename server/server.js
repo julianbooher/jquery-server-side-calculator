@@ -26,7 +26,7 @@ let mathArray = [];
 app.get('/math', (req,res) => {
     console.log('Sending math data');
     res.send(mathArray);
-})
+});
 
 
 // -------------------- END ROUTES --------------------
