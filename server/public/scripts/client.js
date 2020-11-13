@@ -1,5 +1,8 @@
 console.log('Hello from client.js');
 
+
+// IDEA: store an object that has the calculation parameters on client side, and then send it to server side to do the actual calculation.
+
 $(document).ready(onReady);
 
 function onReady(){
