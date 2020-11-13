@@ -1,0 +1,22 @@
+body{
+    margin: 0;
+    background-color: antiquewhite;
+}
+
+header{
+    text-align: center;
+    padding: 1em;
+    background-color: plum;
+    margin-bottom: 5em;
+}
+
+#calculator{
+    display: inline;
+    margin-left: 2em;
+}
+#math-buttons{
+    display: inline;
+}
+.active{
+    background: lightblue;
+}
