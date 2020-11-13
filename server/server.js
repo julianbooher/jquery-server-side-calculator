@@ -28,6 +28,15 @@ app.get('/math', (req,res) => {
     res.send(mathArray);
 });
 
+app.post('/math', (req, res) =>{
+    console.log('Posting to math Array');
+    let mathObject = req.body;
+    console.log('in POST route:', mathObject);
+    doSomeMath(mathObject);
+    // TODO: Math function on server side.
+    res.sendStatus(200);
+})
+
 
 // -------------------- END ROUTES --------------------
 
@@ -36,3 +45,16 @@ app.get('/math', (req,res) => {
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}...`);
 })
+
+function doSomeMath(object){
+    // conditions to check what math operator was selected.
+    if (object.mathOperator === '+'){
+        console.log('Do some addition')
+    } else if (object.mathOperator === '-'){
+        console.log('Do some subtraction')
+    } else if (object.mathOperator === '*'){
+        console.log('Do some multiplication')
+    } else if (object.mathOperator === '/'){
+        console.log('Do some division')
+    }
+}

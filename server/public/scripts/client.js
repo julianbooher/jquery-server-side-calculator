@@ -34,7 +34,7 @@ function getMath(){
         method: 'GET',
         url: '/math'
     }).then( function (response){
-        console.log('Got response', response);
+        console.log('Got response math GET', response);
     }).catch( function(error){
         // Log the error & alert the user
         console.log('Error', error);
@@ -54,7 +54,20 @@ function doMath(event){
     if (!mathObject.numberOne || !mathObject.numberTwo || !mathObject.mathOperator){
         console.log('missing a field when trying to submit');
     }
-
+    else{
+        // POST route to the server.
+        $.ajax({
+            method: 'POST',
+            url: '/math',
+            data: mathObject
+        }).then( function (response){
+            console.log('Got response math POST', response);
+        }).catch( function(error){
+            // Log the error & alert the user
+            console.log('Error', error);
+            alert('Something bad happened. Try again later.');
+        })
+    }
     console.log('doMath working');
 
 }
