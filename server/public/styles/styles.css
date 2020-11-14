@@ -20,3 +20,6 @@ header{
 .active{
     background: lightblue;
 }
+main{
+    margin-left: 2em;
+}

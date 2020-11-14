@@ -30,13 +30,12 @@ app.get('/math', (req,res) => {
 
 app.post('/math', (req, res) =>{
     console.log('Posting to math Array');
+    // New object to be pushed into the array eventually.
     let mathObject = req.body;
-    console.log('in POST route:', mathObject);
+    // Add an answer key:value to the object using doSomeMath function. 
     mathObject.answer = doSomeMath(mathObject);
-    console.log('in POST route, answer:', mathObject.answer);
+    // Add the updated object to the array.
     mathArray.push(mathObject);
-    console.log('in POST route, new mathArray:', mathArray);
-    // TODO: Math function on server side.
     res.sendStatus(200);
 })
 
@@ -57,16 +56,12 @@ function doSomeMath(object){
     // Inside each if/else it checks the mathOperator value, and does that math operation when it finds which if/else it falls under.
     if (object.mathOperator === '+'){
         returnValue = Number(object.numberOne) + Number(object.numberTwo);
-        console.log('Do some addition', returnValue);
     } else if (object.mathOperator === '-'){
         returnValue = Number(object.numberOne) - Number(object.numberTwo);
-        console.log('Do some subtraction', returnValue);
     } else if (object.mathOperator === '*'){
         returnValue = Number(object.numberOne) * Number(object.numberTwo);
-        console.log('Do some multiplication', returnValue);
     } else if (object.mathOperator === '/'){
         returnValue = Number(object.numberOne) / Number(object.numberTwo);
-        console.log('Do some division', returnValue);
     }
     // Returns the result of the math operation, to be added to the mathArray.
     return(returnValue);

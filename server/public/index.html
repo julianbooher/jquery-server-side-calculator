@@ -16,25 +16,27 @@
         <header>
             <h1>Server Side Calculator</h1>
         </header>
-        <h3>Calculator</h3>
-        <form id="calculator">
-            <input type="number" id="number-one">
-            <div id="math-buttons">
-                <button class="btn-math" data-operator="+">+</button>
-                <button class="btn-math" data-operator="-">-</button>
-                <button class="btn-math" data-operator="*">*</button>
-                <button class="btn-math" data-operator="/">÷</button>
+        <main>
+            <h3>Calculator</h3>
+            <form id="calculator">
+                <input type="number" id="number-one">
+                <div id="math-buttons">
+                    <button class="btn-math" data-operator="+">+</button>
+                    <button class="btn-math" data-operator="-">-</button>
+                    <button class="btn-math" data-operator="*">*</button>
+                    <button class="btn-math" data-operator="/">÷</button>
+                </div>
+                <input type="number" id="number-two">
+                <button id="btn-submit">=</button>
+                <button id="btn-clear">C</button>
+            </form>
+            <h2 id="recent-answer"></h2>
+            <div class="math-history">
+                <h2>History:</h2>
+                <ul id="math-history-list">
+    
+                </ul>
             </div>
-            <input type="number" id="number-two">
-            <button id="btn-submit">=</button>
-            <button id="btn-clear">C</button>
-        </form>
-        <h2 id="recent-answer"></h2>
-        <div class="math-history">
-            <h2>History</h2>
-            <ul id="math-history-list">
-
-            </ul>
-        </div>
+        </main>
     </body>
 </html>

@@ -29,12 +29,11 @@ function selectMath(event){
 
 function getMath(){
     // Making a GET request to our server.
-    // This returns back a 'Promise'
     $.ajax({
         method: 'GET',
         url: '/math'
     }).then( function (response){
-        console.log('Got response math GET', response);
+        // This function appends everything stored on server side to the DOM.
         displayMath(response);
     }).catch( function(error){
         // Log the error & alert the user
@@ -58,7 +57,9 @@ function displayMath(mathArray){
     if (mathArray.length > 0){
         // Empty before appending.
         $('#recent-answer').empty();
-        $('#recent-answer').append(mathArray[mathArray.length - 1].answer)
+        $('#recent-answer').append(`
+        <h3>Answer: ${mathArray[mathArray.length - 1].answer}</h3>
+        `)
     }
 }
 
@@ -86,7 +87,9 @@ function doMath(event){
             alert('Something bad happened. Try again later.');
         })
     }
+    // Clear all of the input in the calculator and the selected button.
     clearFields();
+    // Get the new mathArray and append everything to the DOM.
     getMath();
     console.log('doMath working');
 
