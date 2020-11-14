@@ -68,6 +68,7 @@ function doMath(event){
             alert('Something bad happened. Try again later.');
         })
     }
+    clearFields();
     console.log('doMath working');
 
 }
