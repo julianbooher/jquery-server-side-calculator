@@ -35,6 +35,7 @@ function getMath(){
         url: '/math'
     }).then( function (response){
         console.log('Got response math GET', response);
+        displayMath(response);
     }).catch( function(error){
         // Log the error & alert the user
         console.log('Error', error);
@@ -42,6 +43,23 @@ function getMath(){
     })
 
     console.log('End of getMath');
+}
+
+function displayMath(mathArray){
+    // Empty the list before appending.
+    $('#math-history-list').empty();
+    // Loop through the math array starting from the most recent, so that is at the top.
+    for(let i = mathArray.length - 1; i >= 0; i--){
+        $('#math-history-list').append(`
+            <li>${mathArray[i].numberOne} ${mathArray[i].mathOperator} ${mathArray[i].numberTwo} = ${mathArray[i].answer}
+        `)
+    }
+    // Append the answer to the DOM for the most recent calculation that the user did. Only do this if there is something in the mathArray.
+    if (mathArray.length > 0){
+        // Empty before appending.
+        $('#recent-answer').empty();
+        $('#recent-answer').append(mathArray[mathArray.length - 1].answer)
+    }
 }
 
 function doMath(event){
@@ -69,6 +87,7 @@ function doMath(event){
         })
     }
     clearFields();
+    getMath();
     console.log('doMath working');
 
 }
