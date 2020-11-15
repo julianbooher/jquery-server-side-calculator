@@ -12,7 +12,22 @@ function onReady(){
     $('.btn-math').on('click', selectMath);
     $('#btn-clear').on('click', clearFields);
     $('#btn-submit').on('click', doMath);
+    $('body').on('keydown', '#number-one', buttonHandler);
+    $('body').on('keydown', '#number-two', buttonHandler);
 }
+
+// This function runs when the user presses a key inside of the input fields.
+// If the user presses enter, it will click the submit button for them, if the user presses esc, it will clear the fields.
+function buttonHandler(event){
+    if (event.keyCode === 13){
+        $('#btn-submit').click();
+        return false;
+    } else if (event.keyCode === 27){
+        $('#btn-clear').click();
+        return false;
+    }
+}
+
 
 function selectMath(event){
     // Prevent page from refreshing.
@@ -23,8 +38,6 @@ function selectMath(event){
     $(this).addClass('active');
     // Change the mathOperator key inside of the math object to the data value stored inside of the math operator buttons.
     mathObject.mathOperator = $(this).data("operator");
-    // Log to check and make sure the above line is working.
-    console.log('New mathObject:', mathObject);
 }
 
 function getMath(){
@@ -40,7 +53,8 @@ function getMath(){
         console.log('Error', error);
         alert('Something bad happened. Try again later.');
     })
-
+    // put the user's cursor on the first number input field so they can begin typing.
+    $('#number-one').focus();
     console.log('End of getMath');
 }
 
@@ -71,7 +85,12 @@ function doMath(event){
     mathObject.numberTwo = $('#number-two').val();
     // Check to make sure there are two numbers and an operator.
     if (!mathObject.numberOne || !mathObject.numberTwo || !mathObject.mathOperator){
-        console.log('missing a field when trying to submit');
+        // Empty previous error message in case they make two errors in a row.
+        $('#error-message').empty();
+        // Empty answer, seems counterintuitive to leave it up if the user then makes a calculation with an error.
+        $('#recent-answer').empty();
+        // Append error message to the DOM below the calculator.
+        $('#error-message').append('Missing a field, ensure you have two numbers and a math operator.')
     }
     else{
         // POST route to the server.
@@ -86,12 +105,12 @@ function doMath(event){
             console.log('Error', error);
             alert('Something bad happened. Try again later.');
         })
+        // Clear the error message if there is one from a previous error.
+        $('#error-message').empty
+        // Get the new mathArray and append everything to the DOM.
+        getMath();
+        console.log('doMath working');
     }
-    // Clear all of the input in the calculator and the selected button.
-    clearFields();
-    // Get the new mathArray and append everything to the DOM.
-    getMath();
-    console.log('doMath working');
 
 }
 
@@ -106,7 +125,12 @@ function clearFields(event){
     // Clear input fields
     $('#number-one').val('');
     $('#number-two').val('');
+    // Empty the error-message field.
+    $('#error-message').empty();
+    // Empty the answer field. You can still see the most recent answer at the top of the history, so I don't think you need to see the most recent answer if you hit clear.
+    $('#recent-answer').empty();
+    // Move the cursor to number-one input field.
+    $('#number-one').focus();
     // Empty the mathObject object
     mathObject = {};
-    console.log('clearFields:', mathObject);
 }
