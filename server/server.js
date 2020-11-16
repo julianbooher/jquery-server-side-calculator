@@ -10,7 +10,8 @@ const app = express();
 // We usually use 5000 for our port
 // We'll use this port later, it's like a po box at the post office.
 // Where our server will get/send mail/messages
-const port = 5000;
+// press.env.PORT will make it work with heroku.
+const port = process.env.PORT || 5000;
 
 // Tell express where to find static files that it can send on request.
 app.use(express.static('server/public'));
