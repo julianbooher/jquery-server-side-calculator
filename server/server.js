@@ -37,7 +37,7 @@ app.post('/math', (req, res) =>{
     mathObject.answer = doSomeMath(mathObject);
     // Add the updated object to the array.
     mathArray.push(mathObject);
-    res.sendStatus(200);
+    res.send(`${mathObject.answer}`);
 })
 
 app.delete('/math', (req, res) =>{

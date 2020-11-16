@@ -84,14 +84,6 @@ function displayMath(mathArray){
             <li>${mathArray[i].numberOne} ${mathArray[i].mathOperator} ${mathArray[i].numberTwo} = ${mathArray[i].answer}
         `)
     }
-    // Append the answer to the DOM for the most recent calculation that the user did. Only do this if there is something in the mathArray.
-    if (mathArray.length > 0){
-        // Empty before appending.
-        $('#recent-answer').empty();
-        $('#recent-answer').append(`
-        <h3>Answer: ${mathArray[mathArray.length - 1].answer}</h3>
-        `)
-    }
 }
 
 function doMath(event){
@@ -119,14 +111,23 @@ function doMath(event){
             // Clear the error message if there is one from a previous error.
             $('#error-message').empty
             // Get the new mathArray and append everything to the DOM.
-            getMath();        
+            getMath();     
+            // Display the answer
+            displayAnswer(response);   
         }).catch( function(error){
             // Log the error & alert the user
             console.log('Error', error);
             alert('Something bad happened. Try again later.');
         })
     }
+}
 
+function displayAnswer(answer){
+
+    $('#recent-answer').empty();
+    $('#recent-answer').append(`
+    <h3>Answer: ${answer}</h3>
+    `)
 }
 
 function clearFields(event){
