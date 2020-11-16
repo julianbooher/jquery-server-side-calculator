@@ -39,6 +39,14 @@ app.post('/math', (req, res) =>{
     res.sendStatus(200);
 })
 
+app.delete('/math', (req, res) =>{
+    console.log('Deleting mathArray');
+    // Empty the mathArray
+    mathArray = [];
+    // Send back to client side.
+    res.send(mathArray);
+})
+
 
 // -------------------- END ROUTES --------------------
 

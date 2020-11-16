@@ -13,23 +13,21 @@ Web app that acts as a calculator. Does basic addition, subtraction, division an
 
 ## Screen Shot
 
-![Wireframe](salaryCalculator.png)
+![Wireframe](calculator.png)
 
 ## Installation
 
-Download the repository. 
+Download the repository and [node.js](https://nodejs.org/en/download/).  With the folder open in your terminal, run 'npm install' inside the terminal window. Run 'npm start' instide the terminal window to launch the local server, and then you can access the web app through http://localhost:5000/.
 
 ## Usage
 
-- Add an employee to the table using the input fields and submit button.
-- When employee is added, monthly payroll will be calculated based on the cumulative salaries of all employees in the table. 
-- If you want to delete an employee from the table, there is a button in the far right column of the table to do so.
-- When an employee is deleted, the monthly payroll will be recalculated.
-- If an input field is missing a value, an error message will be displayed and the table will not be appended.
+- Basic calculator functions with 2 numbers. Can add, subtract, multiply and divide.
+- Displays an error message if one of the numbers is empty and/or a math operator is not selected.
+- Once the calculation is made, the most recent answer will be displayed to the user, and a history of calculations will be displayed below that, most recent first. 
 
 ## Built With
 
-HTML, CSS, javascript, jQuery.
+HTML, CSS, javascript, jQuery, node, express, bootstrap.
 
 ## Acknowledgement
-Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality. (Thank your people)
+Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality.

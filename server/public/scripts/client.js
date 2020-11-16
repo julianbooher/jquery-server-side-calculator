@@ -12,8 +12,26 @@ function onReady(){
     $('.btn-math').on('click', selectMath);
     $('#btn-clear').on('click', clearFields);
     $('#btn-submit').on('click', doMath);
+    $('#btn-history-reset').on('click', clearHistory)
     $('body').on('keydown', '#number-one', buttonHandler);
     $('body').on('keydown', '#number-two', buttonHandler);
+}
+
+function clearHistory(event){
+    // Prevent page from refreshing.
+    event.preventDefault();
+    // Making a DELETE request to our server.
+    $.ajax({
+        method: 'DELETE',
+        url: '/math'
+    }).then( function (response){
+        // Display the newly emptied array.
+        displayMath(response);
+    }).catch( function(error){
+        // Log the error & alert the user
+        console.log('Error', error);
+        alert('Something bad happened. Try again later.');
+    })
 }
 
 // This function runs when the user presses a key inside of the input fields.
@@ -28,7 +46,7 @@ function buttonHandler(event){
     }
 }
 
-
+// This function handles the user selecting which math operator they'd like to use.
 function selectMath(event){
     // Prevent page from refreshing.
     event.preventDefault();
@@ -55,7 +73,6 @@ function getMath(){
     })
     // put the user's cursor on the first number input field so they can begin typing.
     $('#number-one').focus();
-    console.log('End of getMath');
 }
 
 function displayMath(mathArray){
@@ -99,17 +116,15 @@ function doMath(event){
             url: '/math',
             data: mathObject
         }).then( function (response){
-            console.log('Got response math POST', response);
+            // Clear the error message if there is one from a previous error.
+            $('#error-message').empty
+            // Get the new mathArray and append everything to the DOM.
+            getMath();        
         }).catch( function(error){
             // Log the error & alert the user
             console.log('Error', error);
             alert('Something bad happened. Try again later.');
         })
-        // Clear the error message if there is one from a previous error.
-        $('#error-message').empty
-        // Get the new mathArray and append everything to the DOM.
-        getMath();
-        console.log('doMath working');
     }
 
 }

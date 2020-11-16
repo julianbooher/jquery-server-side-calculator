@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="vendors/jquery.min.js"></script>
         <script src="scripts/client.js"></script>
+        <link rel="stylesheet" href="styles/bootstrap.min.css">
         <link rel="stylesheet" href="styles/styles.css">
 
     </head>
@@ -30,13 +31,18 @@
                 <button id="btn-submit">=</button>
                 <button id="btn-clear">C</button>
             </form>
-            <h3 id="error-message"></h3>
-            <h2 id="recent-answer"></h2>
+            <h3 id="error-message">
+                <!-- will be rendered with jQuery -->
+            </h3>
+            <h2 id="recent-answer">
+                <!-- will be rendered with jQuery -->
+            </h2>
             <div class="math-history">
                 <h2>History:</h2>
                 <ul id="math-history-list">
-    
+                    <!-- will be rendered with jQuery -->
                 </ul>
+                <button id="btn-history-reset">Clear History</button>
             </div>
         </main>
     </body>
